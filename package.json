@@ -1,0 +1,29 @@
+{
+  "name": "Couch2CodeApp",
+  "version": "0.0.0",
+  "description": "A place for developers to practice!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://53c17f53520980f102b1de31630d1ef96f586c51@github.com/couch2code/c2c-app.git"
+  },
+  "author": "TeamLinc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/couch2code/c2c-app/issues"
+  },
+  "homepage": "https://github.com/couch2code/c2c-app",
+  "devDependencies": {
+    "resrcify": "^1.1.3",
+    "handlebars": "^1.3.0",
+    "hbsfy": "^1.3.2",
+    "atomify": "^3.2.0"
+  },
+  "dependencies": {
+    "domify": "^1.3.0"
+  }
+}

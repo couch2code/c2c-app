@@ -23,13 +23,30 @@ A developer is a registered user in the application.
 
 ## What is following?
 
+### Developer Requirements
+
+* NodeJS
+* Bower
+
 ### Developer Setup
+
+```
+#checkout the repo
+npm install
+bower install
+# edit package json and add firebase url
+npm start
+```
 
 ### Style Guide
 
+* NodeJS Style Guide - http://nodeguide.com/style.html
+
 ### Contribution Guide
+
+TBD
 
 ### LICENSE
 
-
+MIT
 

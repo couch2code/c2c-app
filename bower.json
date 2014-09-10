@@ -1,0 +1,19 @@
+{
+  "name": "c2c-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/couch2code/c2c-app",
+  "authors": [
+    "Tom <tom@jackhq.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
