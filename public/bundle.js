@@ -2,7 +2,7 @@
 var domify = require('domify');
 
 document.body.appendChild(
-  domify('<h1>Hello World</h1>')
+  domify('<div class="container"><h1>Hello World</h1></div>')
 );
 },{"domify":2}],2:[function(require,module,exports){
 

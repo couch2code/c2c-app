@@ -17,5 +17,16 @@ atomify({
       prefix: 'fonts/',
       dest: 'public/fonts'
     }
+  },
+  server: {
+    lr: {
+      sync: true,
+      patterns: 'app/*.css'
+    },
+    port: 1339,
+    st: {
+      path: 'public',
+      index: 'index.html'
+    }
   }
 });
