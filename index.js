@@ -21,7 +21,8 @@ atomify({
   server: {
     lr: {
       sync: true,
-      patterns: 'app/*.css'
+      patterns: 'app/*.css',
+      verbose: true
     },
     port: 1339,
     st: {
