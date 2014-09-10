@@ -45,7 +45,7 @@ angular.module('app', ['ui.router',
     });
 });
 },{"./accounts":1,"./index.html":4,"./welcome.html":6,"angular-ui-router/release/angular-ui-router":7,"angular/angular":8,"domify":10,"firebase-simple-login/firebase-simple-login":11,"firebase/firebase":12}],6:[function(require,module,exports){
-module.exports = '<div class="jumbotron">\n  <div class="container">\n    <h1>Welcome to Couch2Code</h1>\n  </div>\n</div>';
+module.exports = '<div class="jumbotron">\n  <div class="container">\n    <h1>Welcome to Couch2Code</h1>\n    <a class="btn btn-default" ui-sref="register">Register</a>\n  </div>\n</div>';
 },{}],7:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
