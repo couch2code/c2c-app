@@ -11,7 +11,8 @@ document.body.appendChild(
 );
 
 angular.module('app', ['ui.router',
-  require('./accounts')(angular).name
+  require('./accounts')(angular).name,
+  require('./challenges')(angular).name
 ])
 .config(function($urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/');
