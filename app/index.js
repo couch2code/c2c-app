@@ -21,4 +21,5 @@ angular.module('app', ['ui.router',
       url: "/",
       template: require('./welcome.html')
     });
-});
+})
+.constant('firebaseUrl', 'https://couch2code.firebaseio.com');

@@ -2,17 +2,22 @@ module.exports = function(ng) {
   return ng.module('challenges', [])
     .config(function($stateProvider) {
       $stateProvider
-        .state('list', {
+        .state('challenges', {
+          url: '/challenges',
+          abstract: true,
+          template: '<div ui-view></div>'
+        })
+        .state('challenges.list', {
           url: '/',
           controller: require('./list'),
           template: require('./list.html')
         })
-        .state('new', {
+        .state('challenges.new', {
           url: '/new',
           controller: require('./new'),
           template: require('./new.html')
         })
-        .state('show', {
+        .state('challenges.show', {
           url: '/:id',
           controller: require('./show'),
           template: require('./show.html')

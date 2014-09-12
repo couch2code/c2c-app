@@ -3,15 +3,30 @@ module.exports = function(ng) {
   return ng.module('accounts', [])
   .config(function($stateProvider) {
     $stateProvider
+      .state('accounts', {
+        url: '/accounts',
+        abstract: true,
+        template: '<div ui-view></div>'
+      })
       .state('register', {
         url: '/register',
         controller: require('./register'),
         template: require('./register.html')
+      })
+      .state('login', {
+        url: '/login',
+        controller: require('./login'),
+        template: require('./login.html')
+      })
+      .state('accounts.profile', {
+        url: '/:username',
+        controller: require('./profile'),
+        template: require('./profile.html')
       });
   });
 };
-},{"./register":3,"./register.html":2}],2:[function(require,module,exports){
-module.exports = '<div class="container">\n  <h2>Register as a Developer</h2>\n  TODO\n</div>';
+},{"./login":3,"./login.html":2,"./profile":5,"./profile.html":4,"./register":7,"./register.html":6}],2:[function(require,module,exports){
+module.exports = '<h1>TODO LOGIN FORM</h1>';
 },{}],3:[function(require,module,exports){
 module.exports = function($scope) {
   $scope.createAccount = function(developer) {
@@ -19,8 +34,57 @@ module.exports = function($scope) {
   }
 }
 },{}],4:[function(require,module,exports){
-module.exports = '<div ng-app="app">\n  <div ui-view></div>\n</div>';
+module.exports = '<h1>Account Profile</h1>';
 },{}],5:[function(require,module,exports){
+module.exports=require(3)
+},{}],6:[function(require,module,exports){
+module.exports = '<div class="container">\n  <h2>Register as a Developer</h2>\n  TODO\n</div>';
+},{}],7:[function(require,module,exports){
+module.exports=require(3)
+},{}],8:[function(require,module,exports){
+module.exports = function(ng) {
+  return ng.module('challenges', [])
+    .config(function($stateProvider) {
+      $stateProvider
+        .state('challenges', {
+          url: '/challenges',
+          abstract: true,
+          template: '<div ui-view></div>'
+        })
+        .state('challenges.list', {
+          url: '/',
+          controller: require('./list'),
+          template: require('./list.html')
+        })
+        .state('challenges.new', {
+          url: '/new',
+          controller: require('./new'),
+          template: require('./new.html')
+        })
+        .state('challenges.show', {
+          url: '/:id',
+          controller: require('./show'),
+          template: require('./show.html')
+        });
+    });
+};
+},{"./list":10,"./list.html":9,"./new":12,"./new.html":11,"./show":14,"./show.html":13}],9:[function(require,module,exports){
+module.exports = '<div class="container">\n  <h1>Challenges TODO</h1>\n</div>';
+},{}],10:[function(require,module,exports){
+module.exports = function($scope) {
+  
+}
+},{}],11:[function(require,module,exports){
+module.exports = '<div class="container">\n  <h1>New Challenge Form</h1>\n</div>';
+},{}],12:[function(require,module,exports){
+module.exports=require(10)
+},{}],13:[function(require,module,exports){
+module.exports = '<div class="container">\n  <h1>SHow Challenge</h1>\n</div>';
+},{}],14:[function(require,module,exports){
+module.exports=require(10)
+},{}],15:[function(require,module,exports){
+module.exports = '<div ng-app="app">\n  <div ui-view></div>\n</div>';
+},{}],16:[function(require,module,exports){
 require('angular/angular');
 require('angular-ui-router/release/angular-ui-router');
 require('firebase/firebase');
@@ -34,7 +98,8 @@ document.body.appendChild(
 );
 
 angular.module('app', ['ui.router',
-  require('./accounts')(angular).name
+  require('./accounts')(angular).name,
+  require('./challenges')(angular).name
 ])
 .config(function($urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/');
@@ -43,10 +108,11 @@ angular.module('app', ['ui.router',
       url: "/",
       template: require('./welcome.html')
     });
-});
-},{"./accounts":1,"./index.html":4,"./welcome.html":6,"angular-ui-router/release/angular-ui-router":7,"angular/angular":8,"domify":10,"firebase-simple-login/firebase-simple-login":11,"firebase/firebase":12}],6:[function(require,module,exports){
-module.exports = '<div class="jumbotron">\n  <div class="container">\n    <h1>Welcome to Couch2Code</h1>\n    <a class="btn btn-default" ui-sref="register">Register</a>\n  </div>\n</div>';
-},{}],7:[function(require,module,exports){
+})
+.constant('firebaseUrl', 'https://couch2code.firebaseio.com');
+},{"./accounts":1,"./challenges":8,"./index.html":15,"./welcome.html":17,"angular-ui-router/release/angular-ui-router":18,"angular/angular":19,"domify":21,"firebase-simple-login/firebase-simple-login":22,"firebase/firebase":23}],17:[function(require,module,exports){
+module.exports = '<div class="jumbotron">\n  <div class="container">\n    <h1>Welcome to Couch2Code</h1>\n    <a class="btn btn-default" ui-sref="register">Register</a>\n    <a class="btn btn-default" ui-sref="login">Login</a>\n    \n  </div>\n</div>';
+},{}],18:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.11
@@ -3706,7 +3772,7 @@ angular.module('ui.router.state')
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
 
-},{}],8:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
  * @license AngularJS v1.2.24
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -25719,7 +25785,7 @@ var styleDirective = valueFn({
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}</style>');
-},{}],9:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -25784,7 +25850,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],10:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 
 /**
  * Expose `parse`.
@@ -25879,7 +25945,7 @@ function parse(html, doc) {
   return fragment;
 }
 
-},{}],11:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (process){
 (function() {var COMPILED=!0,goog=goog||{};goog.global=this;goog.exportPath_=function(a,d,e){a=a.split(".");e=e||goog.global;a[0]in e||!e.execScript||e.execScript("var "+a[0]);for(var f;a.length&&(f=a.shift());)a.length||void 0===d?e=e[f]?e[f]:e[f]={}:e[f]=d};goog.define=function(a,d){var e=d;COMPILED||goog.global.CLOSURE_DEFINES&&Object.prototype.hasOwnProperty.call(goog.global.CLOSURE_DEFINES,a)&&(e=goog.global.CLOSURE_DEFINES[a]);goog.exportPath_(a,e)};goog.DEBUG=!0;goog.LOCALE="en";goog.TRUSTED_SITE=!0;
 goog.provide=function(a){if(!COMPILED){if(goog.isProvided_(a))throw Error('Namespace "'+a+'" already declared.');delete goog.implicitNamespaces_[a];for(var d=a;(d=d.substring(0,d.lastIndexOf(".")))&&!goog.getObjectByName(d);)goog.implicitNamespaces_[d]=!0}goog.exportPath_(a)};goog.setTestOnly=function(a){if(COMPILED&&!goog.DEBUG)throw a=a||"",Error("Importing test-only code into non-debug environment"+a?": "+a:".");};goog.forwardDeclare=function(a){};
@@ -26028,7 +26094,7 @@ fb.simplelogin.util.validation.validateCallback("FirebaseSimpleLogin.removeUser"
 goog.exportProperty(FirebaseSimpleLogin,"onOpen",FirebaseSimpleLogin.onOpen);FirebaseSimpleLogin.VERSION=fb.simplelogin.client.VERSION();})();
 
 }).call(this,require("/sNITr"))
-},{"/sNITr":9}],12:[function(require,module,exports){
+},{"/sNITr":20}],23:[function(require,module,exports){
 /* Firebase v1.0.21 */ (function() {var h,aa=this;function n(a){return void 0!==a}function ba(){}function ca(a){a.sb=function(){return a.md?a.md:a.md=new a}}
 function da(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";
 else if("function"==b&&"undefined"==typeof a.call)return"object";return b}function ea(a){return"array"==da(a)}function fa(a){var b=da(a);return"array"==b||"object"==b&&"number"==typeof a.length}function q(a){return"string"==typeof a}function ga(a){return"number"==typeof a}function ha(a){var b=typeof a;return"object"==b&&null!=a||"function"==b}function ia(a,b,c){return a.call.apply(a.bind,arguments)}
@@ -26187,4 +26253,4 @@ E.prototype.fe=function(a){L("FirebaseRef.setOnDisconnect(value) being deprecate
 E.prototype.Qb=function(a){x("Firebase.unauth",0,1,arguments.length);z("Firebase.unauth",1,a,!0);this.m.Qb(a)};E.prototype.unauth=E.prototype.Qb;E.goOffline=function(){x("Firebase.goOffline",0,0,arguments.length);Y.sb().La()};E.goOnline=function(){x("Firebase.goOnline",0,0,arguments.length);Y.sb().jb()};
 function Sb(a,b){v(!b||!0===a||!1===a,"Can't turn on custom loggers persistently.");!0===a?("undefined"!==typeof console&&("function"===typeof console.log?Qb=r(console.log,console):"object"===typeof console.log&&(Qb=function(a){console.log(a)})),b&&ob.set("logging_enabled",!0)):a?Qb=a:(Qb=null,ob.remove("logging_enabled"))}E.enableLogging=Sb;E.ServerValue={TIMESTAMP:{".sv":"timestamp"}};E.SDK_VERSION="1.0.21";E.INTERNAL=Z;E.Context=Y;})();
 
-},{}]},{},[5])
+},{}]},{},[16])
