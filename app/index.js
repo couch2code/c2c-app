@@ -2,6 +2,7 @@ require('angular/angular');
 require('angular-ui-router/release/angular-ui-router');
 require('firebase/firebase');
 require('firebase-simple-login/firebase-simple-login');
+require('angularfire/dist/angularfire');
 
 var domify = require('domify');
 
@@ -10,7 +11,7 @@ document.body.appendChild(
   domify(main)
 );
 
-angular.module('app', ['ui.router',
+angular.module('app', ['ui.router','firebase',
   require('./accounts')(angular).name,
   require('./challenges')(angular).name
 ])

@@ -16,6 +16,7 @@
   "dependencies": {
     "bootstrap": "~3.2.0",
     "firebase-simple-login": "~1.6.3",
-    "angular-ui-router": "~0.2.11"
+    "angular-ui-router": "~0.2.11",
+    "angularfire": "~0.8.2"
   }
 }
