@@ -1,4 +1,19 @@
-<div class="container">
-  <h2>Register as a Developer</h2>
-  TODO
+<div class="container register">
+    <h2>Register as a Developer</h2> 
+        <p>If you're already a member, <a href="#/login">here</a>!</p>
+    <form class="register-form" ng-submit="registerUser()">
+        <div class="form-inputs">
+            <input class="username" type="text" ng-model="user.username" placeholder="Username"/>
+            <input class="email" type="email" ng-model="user.email" placeholder="Email"/>
+            <input class="password" type="password" ng-model="user.password" placeholder="Password"/>
+        <div class="form-controls">
+            <input class="register btn btn-primary" type="submit" value="Register Me"/>
+            <button class="cancel btn btn-danger">Cancel</button>
+        </div>
+    </form>
+        <div class="social-register">
+            <a class="twitter" href="#/twitter-link"><img src="path/to/twitter/logo"></a>
+            <a class="github" href="#/github-link"><img src="path/to/github/logo"></a>
+            <a class="linkedin" href="#linkedin-link"><img src="path/to/linkedin/logo"></a>
+        </div>
 </div>
