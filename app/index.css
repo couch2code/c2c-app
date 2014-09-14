@@ -1,1 +1,31 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+html, body, div, ul, li, section, a, img, p {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	font: 'Lato', sans-serif;
+}
+ul {
+	list-style-type: none;
+}
+h1, h2 {
+	font-weight: 700;
+}
+form, form div {
+	margin: 0 auto;
+}
+.username, .email, .password {
+	width: 250px;
+	height: 45px;
+	padding: 5px;
+}
+.social-login ul li img {
+	border-radius: 100%;
+}
+.twitter, .github, .tumblr li {
+	border-radius: 100%;
+	border: solid 1px #eee;
+}

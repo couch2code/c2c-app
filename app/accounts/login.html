@@ -2,7 +2,7 @@
     <h2>Developer Login</h2>
     <p class="subheader">Not a member yet? Register <a href="#/register">here</a>!
         <p>
-            <form class="login form" ng-submit="registerUser()">
+            <form class="login form" ng-submit="login()">
                 <ul class="form-inputs">
                     <li><input class="username" placeholder="Username or Email Address" ng-model="username in users || email in users"></li>
                     <li><input class="password" placeholder="Password" ng-model="password in users"></li>
@@ -11,5 +11,12 @@
                     <input class="login btn btn-md-default" type="submit" value="Login">
                     <button class="cancel btn btn-md-default" ng-click="#/">Cancel</button>
                 </div>
+                <div class="social-login">
+           		<ul class="icons">
+           			<li id="twitter"><a href="twitter-link-here"><img src="images/twitter-icon.svg"></li>
+           			<li id="github"><a href="github-link-here"><img src="iages/github-icon.svg"></li>
+           			<li id="tumblr"><a href="tumblr-link-here"><img src="images/tumblr-icon.svg"></li>
+           		</ul>
+            </div>
             </form>
 </div>
