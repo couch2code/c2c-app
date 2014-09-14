@@ -1,4 +1,16 @@
 <div class="container">
-  <h2>Register as a Developer</h2>
-  TODO
+    <h2>Register as a Developer</h2>
+    <p class="subheader">Already a member? Signin <a href="#/register">here</a>!
+        <p>
+            <form class="register form" ng-submit="register()">
+                <ul class="form-inputs">
+                    <li><input class="username" placeholder="Username" ng-model="username in users"></li>
+                    <li><input class="username" placeholder="Email Address" ng-model="email in users"></li>
+                    <li><input class="password" placeholder="Password" ng-model="password in users"></li>
+                </ul>
+                <div class="form-controls">
+                    <input class="login btn btn-md-default" type="submit" value="Register Now">
+                    <button class="cancel btn btn-md-default" ng-click="#/">Cancel</button>
+                </div>
+            </form>
 </div>
