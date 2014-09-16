@@ -1,5 +1,14 @@
 module.exports = function($scope) {
-  $scope.createAccount = function(developer) {
-    // TODO: Add Login Info and Profile Info
-  }
-}
+    var ref = new FirebaseUrl;
+    var authClient = $firebaseSimpleLogin(ref);
+    
+    $scope.createAccount = function(email, pass, username, callback) {
+      angularFireAuth._authClient.createAccount( email, pass, function(err, user) {
+        if (callback) {
+            callback(err,user);
+            $rootScope.$apply();
+        }
+      });
+    };
+};
+  };

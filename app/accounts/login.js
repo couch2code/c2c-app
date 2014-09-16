@@ -1,5 +1,14 @@
 module.exports = function($scope) {
-  $scope.createAccount = function(developer) {
-    // TODO: Add Login Info and Profile Info
-  }
-}
+   var ref = new FirebaseUrl;
+   var authClient = $firebaseSimpleLogin(ref);
+    
+   $scope.loginWithGithub = function () {
+       authClient.$login("github").then(function(user) {
+           console.log("logged in as: " + user.uid);
+       },
+           function(error) {
+               console.error("no login for you b/c" + error)
+           });
+       }
+};
+   
