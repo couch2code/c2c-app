@@ -26,21 +26,56 @@ module.exports = function(ng) {
   });
 };
 },{"./login":3,"./login.html":2,"./profile":5,"./profile.html":4,"./register":7,"./register.html":6}],2:[function(require,module,exports){
-module.exports = '<h1>TODO LOGIN FORM</h1>';
+module.exports = '<div class="container register">\n    <h2>Login as a Developer</h2> \n        <p>If you\'re not yet a member, <a href="#/register">click here</a>!</p>\n    <form class="login-form" ng-submit="login(user)">\n        <div class="form-inputs">\n            <input class="username" type="text" ng-model="user.username" placeholder="Username"/>\n            <input class="email" type="email" ng-model="user.email" placeholder="Email"/>\n            <input class="password" type="password" ng-model="user.password" placeholder="Password"/>\n        <div class="form-controls">\n            <input class="login btn btn-primary" type="submit" value="Login"/>\n            <button class="cancel btn btn-danger">Cancel</button>\n            <button>GitHub</button>\n        </div>\n    </form>\n        <div class="social-register">\n            <a class="github" href="#/github-link"><img src="../images/github-icon.svg">\n        </div>\n</div>\n';
 },{}],3:[function(require,module,exports){
-module.exports = function($scope) {
-  $scope.createAccount = function(developer) {
-    // TODO: Add Login Info and Profile Info
-  }
-}
+module.exports = function($scope, $firebase, $firebaseSimpleLogin, firebaseUrl, $state) {
+ var ref = new Firebase(firebaseUrl);
+ var authClient = $firebaseSimpleLogin(ref);
+ $scope.login = function(user) {
+   authClient.login('passord', user, function(err, user) {
+     // if error show alert - ugly is good!
+     if (err) { return alert(err.message); }
+     // logged in - set sessionStorage, when it makes sense
+     $state.go('home');
+   });
+ };
+};
 },{}],4:[function(require,module,exports){
-module.exports = '<h1>Account Profile</h1>';
+module.exports = '<h1>Account Profile</h1>\n<form ng-submit="createUser(user)">\n  <label>Email</label>\n  <input ng-model="user.email">\n  <label>Password</label>\n  <input type="password" ng-model="user.password">\n  <button class="button button-default">Create User</button>\n</form>';
 },{}],5:[function(require,module,exports){
-module.exports=require(3)
+module.exports = function($scope, $firebase, firebaseUrl, $firebaseSimpleLogin, $state) {
+  // when we require firebase/firebase in the index file, it creates
+  // a glocal object called Firebase
+  //
+  // we are creating a new reference to https://couch2code.firebaseio.com (aka firebaseUrl)
+  var ref = new Firebase(firebaseUrl);
+  // Now we want to order another service: called firebaseSimpleLogin -> ( needs to go in the params ^^^)
+  var authClient = $firebaseSimpleLogin(ref);
+  // now we are creating a function that will be bound to the dom form submit method  
+  $scope.createUser = function(user) {
+    // we now need to create the account using the authClient Object
+    authClient.createUser(user.email, user.password, function(err, user) {
+      // now we need to go to another state
+      $state.go('home');
+    });
+  };
+};
 },{}],6:[function(require,module,exports){
-module.exports = '<div class="container register">\n    <h2>Register as a Developer</h2> \n        <p>If you\'re already a member, <a href="#/login">here</a>!</p>\n    <form class="register-form" ng-submit="registerUser()">\n        <div class="form-inputs">\n            <input class="username" type="text" ng-model="user.username" placeholder="Username"/>\n            <input class="email" type="email" ng-model="user.email" placeholder="Email"/>\n            <input class="password" type="password" ng-model="user.password" placeholder="Password"/>\n        <div class="form-controls">\n            <input class="register btn btn-primary" type="submit" value="Register Me"/>\n            <button class="cancel btn btn-danger">Cancel</button>\n        </div>\n    </form>\n        <div class="social-register">\n            <a class="twitter" href="#/twitter-link"><img src="path/to/twitter/logo"></a>\n            <a class="github" href="#/github-link"><img src="path/to/github/logo"></a>\n            <a class="linkedin" href="#linkedin-link"><img src="path/to/linkedin/logo"></a>\n        </div>\n</div>';
+module.exports = '<div class="container register">\n    <h2>Register as a Developer</h2> \n        <p>If you\'re already a member, <a href="#/login">click here</a>!</p>\n    <form class="register-form" ng-submit="registerUser()">\n        <div class="form-inputs">\n            <input class="username" type="text" ng-model="user.username" placeholder="Username"/>\n            <input class="email" type="email" ng-model="user.email" placeholder="Email"/>\n            <input class="password" type="password" ng-model="user.password" placeholder="Password"/>\n        <div class="form-controls">\n            <input class="register btn btn-primary" type="submit" value="Register"/>\n            <button class="cancel btn btn-danger">Cancel</button>\n        </div>\n    </form>\n        <div class="social-register">\n            <a class="github" href="#/github-link"><img src="github-icon.svg">\n       </div>\n</div>';
 },{}],7:[function(require,module,exports){
-module.exports=require(3)
+module.exports = function($scope) {
+    var ref = new FirebaseUrl;
+    var authClient = $firebaseSimpleLogin(ref);
+        $scope.createUser = function() { 
+            //need to switch to github login
+            authClient.createUser(newUser.email, newUser.password,
+                function(error, user) {
+                    if (!error) {
+                         console.log(user.id + ', ' + user.provider);
+                    }
+                  });
+                }
+            };
 },{}],8:[function(require,module,exports){
 module.exports = function(ng) {
   return ng.module('challenges', [])

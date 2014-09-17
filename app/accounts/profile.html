@@ -1,1 +1,8 @@
 <h1>Account Profile</h1>
+<form ng-submit="createUser(user)">
+  <label>Email</label>
+  <input ng-model="user.email">
+  <label>Password</label>
+  <input type="password" ng-model="user.password">
+  <button class="button button-default">Create User</button>
+</form>
