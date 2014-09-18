@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
-html, body, div, ul, li, section, a, img, p {
+html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
@@ -11,24 +11,43 @@ html, body, div, ul, li, section, a, img, p {
 ul {
 	list-style-type: none;
 }
-h1, h2 {
+li {
+    padding: 5px;
+}
+h1 {
+    letter-spacing: 2px;
+}
+.header h1 {
+    color: #eee;
 	font-weight: 700;
 }
-form, form div {
-	margin: 0 auto;
+.header h3 {
+    color: #eee;
+    font-weight: 400;
 }
-button, input {
-	padding: 5px;
+.header p {
+    color: #eee;
+    font-weight: 300;
+}
+.header, .login-form, .register-form, .social-register {
+    margin-left: 125px;
+}
+.jumbotron {
+    background-color: #2E3E4E;
 }
 .username, .email, .password {
 	width: 250px;
-	height: 45px;
-	padding: 5px;
+	height: 40px;
 }
-.social-login ul li img {
+.github img {
 	border-radius: 100%;
+    width: 64px;
+    height: 64px;
 }
-.twitter, .github, .tumblr li {
-	border-radius: 100%;
-	border: solid 1px #eee;
+.social-register {
+    color: #eee;
+}
+.social-register p {
+    color: #eee;
+    font-weight: 300;
 }

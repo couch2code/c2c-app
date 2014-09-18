@@ -1,27 +1,28 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/home/action/.parts/bin/node',
 1 verbose cli   '/home/action/.parts/bin/npm',
-1 verbose cli   'start' ]
+1 verbose cli   'run',
+1 verbose cli   'build' ]
 2 info using npm@1.4.3
 3 info using node@v0.10.26
 4 verbose node symlink /home/action/.parts/bin/node
-5 verbose run-script [ 'prestart', 'start', 'poststart' ]
-6 info prestart Couch2CodeApp@0.0.0
-7 info start Couch2CodeApp@0.0.0
+5 verbose run-script [ 'prebuild', 'build', 'postbuild' ]
+6 info prebuild Couch2CodeApp@0.0.0
+7 info build Couch2CodeApp@0.0.0
 8 verbose unsafe-perm in lifecycle true
-9 info Couch2CodeApp@0.0.0 Failed to exec start script
-10 error Couch2CodeApp@0.0.0 start: `node index.js`
+9 info Couch2CodeApp@0.0.0 Failed to exec build script
+10 error Couch2CodeApp@0.0.0 build: `atomify -d -c app/index.css -j app/index.js -o public/bundle`
 10 error Exit status 8
-11 error Failed at the Couch2CodeApp@0.0.0 start script.
+11 error Failed at the Couch2CodeApp@0.0.0 build script.
 11 error This is most likely a problem with the Couch2CodeApp package,
 11 error not with npm itself.
 11 error Tell the author that this fails on your system:
-11 error     node index.js
+11 error     atomify -d -c app/index.css -j app/index.js -o public/bundle
 11 error You can get their info via:
 11 error     npm owner ls Couch2CodeApp
 11 error There is likely additional logging output above.
 12 error System Linux 3.13.4
-13 error command "/home/action/.parts/bin/node" "/home/action/.parts/bin/npm" "start"
+13 error command "/home/action/.parts/bin/node" "/home/action/.parts/bin/npm" "run" "build"
 14 error cwd /home/action/workspace/c2c-app
 15 error node -v v0.10.26
 16 error npm -v 1.4.3

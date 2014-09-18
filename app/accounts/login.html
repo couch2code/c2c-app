@@ -1,18 +1,22 @@
-<div class="container register">
-    <h2>Login as a Developer</h2> 
+<div class="jumbotron">
+    <div class="header">
+        <h1>couch2code</h1>
+        <h3>Login as a Developer</h3> 
         <p>If you're not yet a member, <a href="#/register">click here</a>!</p>
-    <form class="login-form" ng-submit="login(user)">
-        <div class="form-inputs">
-            <input class="username" type="text" ng-model="user.username" placeholder="Username"/>
-            <input class="email" type="email" ng-model="user.email" placeholder="Email"/>
-            <input class="password" type="password" ng-model="user.password" placeholder="Password"/>
+    </div>
+    <div class="login-form">
+        <ul class="form-inputs">
+           <li><input class="username" type="text" ng-model="user.username" placeholder="Username"/></li>
+           <li><input class="email" type="email" ng-model="user.email" placeholder="Email"/></li>
+           <li><input class="password" type="password" ng-model="user.password" placeholder="Password"/></li>
+        </ul>
         <div class="form-controls">
-            <input class="login btn btn-primary" type="submit" value="Login"/>
+            <button class="btn btn-primary" ng-click="login(user)">Login</button>
             <button class="cancel btn btn-danger">Cancel</button>
-            <button>GitHub</button>
-        </div>
-    </form>
+            </div>
+    </div>
         <div class="social-register">
-            <a class="github" href="#/github-link"><img src="../images/github-icon.svg">
+            <p class="login-with-git">Or, log in with your GitHub account!</p>
+            <a class="github" href="#/github-link"><img src="http://amillionbluepages.net/img/logos/octocat.png">
         </div>
 </div>
