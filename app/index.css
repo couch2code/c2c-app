@@ -14,15 +14,19 @@ ul {
 li {
     padding: 5px;
 }
-h1 {
+.jumbotron, div, p {
+    margin: 0 auto;
+}
+.jumbotron h1, .jumbotron h2, .jumbotron h3, h1, h2, h3, h4 {
+    color: #eee;
+}
+.jumbotron h1, h1 {
     letter-spacing: 2px;
 }
 .header h1 {
-    color: #eee;
 	font-weight: 700;
 }
 .header h3 {
-    color: #eee;
     font-weight: 400;
 }
 .header p {

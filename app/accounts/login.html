@@ -1,3 +1,4 @@
+<div class="container">
 <div class="jumbotron">
     <div class="header">
         <h1>couch2code</h1>
@@ -11,12 +12,13 @@
            <li><input class="password" type="password" ng-model="user.password" placeholder="Password"/></li>
         </ul>
         <div class="form-controls">
-            <button class="btn btn-primary" ng-click="login(user)">Login</button>
-            <button class="cancel btn btn-danger">Cancel</button>
-            </div>
+            <a class="btn btn-primary" ui-sref="dashboard">Login</a>
+            <a class="cancel btn btn-danger" ui-sref="welcome">Cancel</a>
+        </div>
     </div>
         <div class="social-register">
             <p class="login-with-git">Or, log in with your GitHub account!</p>
             <a class="github" href="#/github-link"><img src="http://amillionbluepages.net/img/logos/octocat.png">
         </div>
 </div>
+    </div>
